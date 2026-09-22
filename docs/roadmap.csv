@@ -1,0 +1,15 @@
+ID,Phase,Deliverable,Status,Priority,Depends on,Acceptance criterion,Help wanted,Code / evidence
+R01,01 Reproducibility,Document the exact data pipeline,Next,High,None,A fresh machine produces compatible neuron tables and matrices.,Data engineering,data/README.md; lif_engine_realtime.py
+R02,01 Reproducibility,Select compatible script versions,Next,High,None,One documented engine / vision / overlay combination.,Python architecture,obs_overlay_server_v6.py; vision_bridge_v13.py
+R03,01 Reproducibility,Lock and verify the environment,Planned,High,R02,Clean Python 3.12 install with tested dependency versions.,Packaging,requirements.txt
+R04,02 Neural baseline,Validate matrix and neuron alignment,Planned,High,R01,"Checked dimensions, ordering, signs and matrix orientation.",Scientific computing,lif_engine_realtime.py; brain_session.py
+R05,02 Neural baseline,Establish seeded neural baselines,Planned,High,"R03, R04",Repeatable stimulus and recovery results with recorded seeds.,Simulation testing,endogenous_pulse_recovery_test.py; test_data.py
+R06,03 Visual pathway,Validate left / right and retina mapping,Planned,High,"R01, R04",Controlled stimuli produce documented laterality responses.,Vision / neuroscience,build_visual_laterality_indices.py; visual_laterality_response_test.py
+R07,03 Visual pathway,Profile capture and encoding latency,Planned,Medium,"R02, R06",Latency measurements with hardware and capture settings.,Optimization,screen_vision_test_v3.py; vision_bridge_v13.py
+R08,04 Motor and body,Check neural-to-motor causality,Planned,High,R05,Controlled activation and ablation tests with clear metrics.,Simulation testing,test_dn_motor_causality.py; motor_decoder_v2.py
+R09,04 Motor and body,Verify movement and environment contacts,Planned,Medium,"R02, R08","Repeatable grounded, airborne and collision scenarios.",Physics / integration,body/character_controller.py; world/obs_habitat.py
+R10,05 Integrated demo,Build one controlled end-to-end scenario,Planned,High,"R06, R07, R09",A documented input-to-behaviour demo that can be rerun.,Integration,obs_overlay_server_v6.py; vision_bridge_v13.py
+R11,05 Integrated demo,Evaluate optional Gemini perception,Exploratory,Low,R10,"Document usefulness, cost, privacy and failure handling.",Applied AI,gemini_vision.py; vision/gemini_vision.py
+R12,06 Evidence and release,Benchmark the complete loop,Planned,Medium,R10,Publish measured latency and stability with reproducible setup.,Performance,lif_engine_realtime.py; docs/ROADMAP.md
+R13,06 Evidence and release,Record a clean demonstration,Planned,Medium,"R10, R12","A demo without private desktop content, with known limitations.",Documentation,README.md
+R14,06 Evidence and release,Document asset provenance and choose code license,Next,High,None,"Code, data and model terms clearly distinguished.",Project maintenance,README.md; fly_master.glb; assets/vendor/fly-renderer.bundle.js

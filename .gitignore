@@ -1,0 +1,40 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+secrets*.json
+# Local Python environments, compiled files and IDE state
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.nbc
+*.nbi
+.idea/
+.vscode/
+.pytest_cache/
+# Captured screens and runtime logs can contain personal information
+vision_debug/
+**/vision_reports/
+*.jsonl
+*.log
+# Scientific datasets and generated experiment results are distributed separately
+data/*
+!data/README.md
+!data/DATA_MANIFEST.csv
+!data/raw/
+data/raw/*
+!data/raw/.gitkeep
+!data/processed/
+data/processed/*
+!data/processed/.gitkeep
+laterality_reports/
+# OS files
+.DS_Store
+Thumbs.db

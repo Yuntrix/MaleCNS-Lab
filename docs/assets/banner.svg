@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="430" viewBox="0 0 1280 430" role="img" aria-labelledby="title desc">
+<title id="title">MaleCNS — From connections to behaviour</title><desc id="desc">An independent student project exploring connectome-driven simulation, vision and virtual behaviour. Work in progress.</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#101d33"/><stop offset="1" stop-color="#172a44"/></linearGradient><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#294058" stroke-width=".6"/></pattern></defs>
+<rect width="1280" height="430" rx="22" fill="url(#bg)"/><rect width="1280" height="430" rx="22" fill="url(#grid)" opacity=".5"/>
+<rect x="58" y="56" width="5" height="35" fill="#67e8cf"/><text x="80" y="80" fill="#a8c0d5" font-family="Arial,sans-serif" font-size="16" letter-spacing="3">YUNTRIX / STUDENT EXPLORATION</text>
+<text x="58" y="175" fill="#ffffff" font-family="Arial,sans-serif" font-size="74" font-weight="700">MaleCNS</text>
+<text x="62" y="224" fill="#67e8cf" font-family="Arial,sans-serif" font-size="28">From connections to behaviour.</text>
+<text x="62" y="270" fill="#c4d2df" font-family="Arial,sans-serif" font-size="19">Connectome-driven simulation. Visual input. Virtual embodiment.</text>
+<rect x="60" y="322" width="178" height="38" rx="19" fill="#294058"/><text x="82" y="347" fill="#ffcf83" font-family="Arial,sans-serif" font-size="15">WORK IN PROGRESS</text>
+<text x="262" y="347" fill="#c4d2df" font-family="Arial,sans-serif" font-size="16">Python · LIF dynamics · OBS · Learning in public</text>
+<g stroke="#5dd7c2" stroke-width="1.5" opacity=".55"><path d="M955 100L1060 65L1170 145L1110 236L1180 320L1030 355L925 270L955 100L1110 236L1060 65M925 270L1170 145M955 100L1180 320M1030 355L1110 236" fill="none"/></g>
+<g fill="#67e8cf"><circle cx="955" cy="100" r="6"/><circle cx="1060" cy="65" r="5"/><circle cx="1170" cy="145" r="8"/><circle cx="1110" cy="236" r="10"/><circle cx="1180" cy="320" r="6"/><circle cx="1030" cy="355" r="5"/><circle cx="925" cy="270" r="7"/></g>
+</svg>

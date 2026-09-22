@@ -1,0 +1,12 @@
+# Inferred from source imports; this is not a tested dependency lockfile.
+numpy
+pandas
+scipy
+numba
+pyarrow
+mss
+matplotlib
+Pillow
+pydantic>=2
+google-genai
+websockets
