@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="520" viewBox="0 0 1400 520" role="img" aria-labelledby="t d">
+<title id="t">MaleCNS OBS Fly animation reel</title><desc id="d">Seven verified GLB animation clips with durations.</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#10131e"/><stop offset="1" stop-color="#1c1430"/></linearGradient><linearGradient id="w"><stop stop-color="#d7f4ff" stop-opacity=".8"/><stop offset="1" stop-color="#6fbbe0" stop-opacity=".3"/></linearGradient></defs>
+<rect width="1400" height="520" rx="28" fill="url(#bg)"/>
+<text x="54" y="60" fill="#fff" font-family="Arial,sans-serif" font-size="28" font-weight="800">Exported character animation set</text>
+<text x="54" y="91" fill="#a99dbd" font-family="Arial,sans-serif" font-size="16">Verified directly from fly_master.glb • every clip drives 81 animation channels</text>
+
+<symbol id="fly" viewBox="-80 -80 160 160">
+ <g stroke="#090b0d" stroke-width="5" stroke-linecap="round"><path d="M-26 22L-55 49"/><path d="M-10 28L-24 61"/><path d="M15 28L32 59"/><path d="M29 20L57 47"/></g>
+ <ellipse cx="0" cy="19" rx="31" ry="43" fill="#0e1113" stroke="#29313a" stroke-width="4"/>
+ <ellipse cx="0" cy="-20" rx="35" ry="31" fill="#181c20" stroke="#303943" stroke-width="4"/>
+ <path d="M-26-25C-67-58-85-39-64-8C-50 13-30 7-13-5Z" fill="url(#w)" stroke="#7cc8e9" stroke-opacity=".5"/>
+ <path d="M26-25C67-58 85-39 64-8C50 13 30 7 13-5Z" fill="url(#w)" stroke="#7cc8e9" stroke-opacity=".5"/>
+ <circle cx="0" cy="-53" r="28" fill="#171b1f" stroke="#303943" stroke-width="4"/>
+ <ellipse cx="-15" cy="-57" rx="12" ry="16" fill="#5c0508"/><ellipse cx="15" cy="-57" rx="12" ry="16" fill="#5c0508"/>
+ <circle cx="-11" cy="-63" r="3.5" fill="#d1e0e0"/><circle cx="19" cy="-63" r="3.5" fill="#d1e0e0"/>
+</symbol>
+
+<!-- row 1 -->
+<g font-family="Arial,sans-serif">
+ <g transform="translate(54 126)"><rect width="300" height="154" rx="18" fill="#171b28" stroke="#343c50"/><use href="#fly" x="18" y="20" width="110" height="110"/><text x="142" y="58" fill="#fff" font-size="17" font-weight="700">FLY_IDLE</text><text x="142" y="86" fill="#a99dbd" font-size="14">2.000 s</text><rect x="142" y="105" width="102" height="24" rx="12" fill="#223127"/><text x="160" y="122" fill="#86efac" font-size="12" font-weight="700">LOOP</text></g>
+ <g transform="translate(374 126)"><rect width="300" height="154" rx="18" fill="#171b28" stroke="#343c50"/><g transform="translate(8 7) rotate(-8 73 74)"><use href="#fly" x="18" y="20" width="110" height="110"/></g><text x="142" y="58" fill="#fff" font-size="17" font-weight="700">FLY_WALK</text><text x="142" y="86" fill="#a99dbd" font-size="14">1.000 s</text><rect x="142" y="105" width="102" height="24" rx="12" fill="#223127"/><text x="160" y="122" fill="#86efac" font-size="12" font-weight="700">LOOP</text></g>
+ <g transform="translate(694 126)"><rect width="300" height="154" rx="18" fill="#171b28" stroke="#343c50"/><g transform="translate(0 -8)"><use href="#fly" x="18" y="20" width="110" height="110"/></g><text x="142" y="58" fill="#fff" font-size="17" font-weight="700">FLY_FLIGHT</text><text x="142" y="86" fill="#a99dbd" font-size="14">0.333 s</text><rect x="142" y="105" width="102" height="24" rx="12" fill="#223127"/><text x="160" y="122" fill="#86efac" font-size="12" font-weight="700">LOOP</text></g>
+ <g transform="translate(1014 126)"><rect width="332" height="154" rx="18" fill="#171b28" stroke="#343c50"/><g transform="translate(5 -15) scale(.95)"><use href="#fly" x="18" y="20" width="110" height="110"/></g><path d="M55 132L101 93" stroke="#c4b5fd" stroke-width="4" stroke-linecap="round"/><path d="M94 93L104 92L103 102" fill="none" stroke="#c4b5fd" stroke-width="4"/><text x="160" y="58" fill="#fff" font-size="17" font-weight="700">FLY_TAKEOFF</text><text x="160" y="86" fill="#a99dbd" font-size="14">0.708 s</text><rect x="160" y="105" width="116" height="24" rx="12" fill="#2c243b"/><text x="176" y="122" fill="#d8b4fe" font-size="12" font-weight="700">TRANSITION</text></g>
+</g>
+
+<!-- row 2 -->
+<g font-family="Arial,sans-serif">
+ <g transform="translate(214 305)"><rect width="300" height="154" rx="18" fill="#171b28" stroke="#343c50"/><g transform="translate(0 12)"><use href="#fly" x="18" y="20" width="110" height="110"/></g><path d="M52 103L99 136" stroke="#c4b5fd" stroke-width="4" stroke-linecap="round"/><text x="142" y="58" fill="#fff" font-size="17" font-weight="700">FLY_LAND</text><text x="142" y="86" fill="#a99dbd" font-size="14">0.792 s</text><rect x="142" y="105" width="116" height="24" rx="12" fill="#2c243b"/><text x="158" y="122" fill="#d8b4fe" font-size="12" font-weight="700">TRANSITION</text></g>
+ <g transform="translate(534 305)"><rect width="300" height="154" rx="18" fill="#171b28" stroke="#343c50"/><g transform="translate(15 3) rotate(-18 73 74)"><use href="#fly" x="18" y="20" width="110" height="110"/></g><path d="M97 44Q62 22 42 55" fill="none" stroke="#c4b5fd" stroke-width="4"/><text x="142" y="58" fill="#fff" font-size="17" font-weight="700">FLY_TURN_LEFT</text><text x="142" y="86" fill="#a99dbd" font-size="14">0.708 s</text><rect x="142" y="105" width="116" height="24" rx="12" fill="#2c243b"/><text x="158" y="122" fill="#d8b4fe" font-size="12" font-weight="700">TRANSITION</text></g>
+ <g transform="translate(854 305)"><rect width="332" height="154" rx="18" fill="#171b28" stroke="#343c50"/><g transform="translate(-4 3) rotate(18 73 74)"><use href="#fly" x="18" y="20" width="110" height="110"/></g><path d="M51 44Q86 22 106 55" fill="none" stroke="#c4b5fd" stroke-width="4"/><text x="160" y="58" fill="#fff" font-size="17" font-weight="700">FLY_TURN_RIGHT</text><text x="160" y="86" fill="#a99dbd" font-size="14">0.708 s</text><rect x="160" y="105" width="116" height="24" rx="12" fill="#2c243b"/><text x="176" y="122" fill="#d8b4fe" font-size="12" font-weight="700">TRANSITION</text></g>
+</g>
+</svg>

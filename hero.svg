@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="640" viewBox="0 0 1400 640" role="img" aria-labelledby="title desc">
+<title id="title">MaleCNS / OBS Fly</title>
+<desc id="desc">A tiny autonomous cartoon fly living inside an OBS scene.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b0d17"/><stop offset="0.48" stop-color="#171229"/><stop offset="1" stop-color="#26154a"/></linearGradient>
+  <radialGradient id="glow" cx="70%" cy="45%" r="45%"><stop stop-color="#7c3aed" stop-opacity=".45"/><stop offset="1" stop-color="#7c3aed" stop-opacity="0"/></radialGradient>
+  <linearGradient id="wing" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d7f4ff" stop-opacity=".82"/><stop offset="1" stop-color="#6fbbe0" stop-opacity=".35"/></linearGradient>
+  <filter id="shadow"><feGaussianBlur stdDeviation="14"/></filter>
+  <filter id="soft"><feGaussianBlur stdDeviation="2"/></filter>
+  <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M42 0H0V42" fill="none" stroke="#8b5cf6" stroke-opacity=".09"/></pattern>
+</defs>
+<rect width="1400" height="640" rx="34" fill="url(#bg)"/>
+<rect width="1400" height="640" rx="34" fill="url(#grid)"/>
+<rect width="1400" height="640" rx="34" fill="url(#glow)"/>
+
+<!-- OBS window -->
+<rect x="760" y="95" width="555" height="430" rx="24" fill="#0d111c" stroke="#6d28d9" stroke-opacity=".8" stroke-width="2"/>
+<rect x="782" y="118" width="511" height="45" rx="11" fill="#151a28"/>
+<circle cx="807" cy="140" r="6" fill="#ef4444"/><circle cx="829" cy="140" r="6" fill="#f59e0b"/><circle cx="851" cy="140" r="6" fill="#22c55e"/>
+<text x="887" y="147" fill="#8f9bb3" font-family="Arial,sans-serif" font-size="15">OBS • WORLD SCENE</text>
+<rect x="782" y="183" width="322" height="214" rx="14" fill="#171a24" stroke="#31384a"/>
+<rect x="1124" y="183" width="169" height="124" rx="12" fill="#141824" stroke="#31384a"/>
+<text x="1151" y="210" fill="#aab2c5" font-family="Arial,sans-serif" font-size="13">KICK CHAT</text>
+<g opacity=".75" fill="#353d51"><rect x="1145" y="227" width="118" height="9" rx="4"/><rect x="1145" y="247" width="90" height="9" rx="4"/><rect x="1145" y="267" width="105" height="9" rx="4"/></g>
+<rect x="1124" y="326" width="169" height="71" rx="12" fill="#141824" stroke="#31384a"/>
+<text x="1153" y="357" fill="#aab2c5" font-family="Arial,sans-serif" font-size="13">WEBCAM</text>
+<rect x="1150" y="368" width="116" height="9" rx="4" fill="#353d51"/>
+<rect x="782" y="418" width="511" height="84" rx="14" fill="#111622" stroke="#31384a"/>
+<text x="807" y="447" fill="#6ee7b7" font-family="Arial,sans-serif" font-size="12" letter-spacing="2">PHYSICAL WORLD</text>
+<rect x="807" y="463" width="141" height="16" rx="8" fill="#282f43"/><rect x="965" y="463" width="86" height="16" rx="8" fill="#282f43"/><rect x="1069" y="463" width="193" height="16" rx="8" fill="#282f43"/>
+
+<!-- shadow -->
+<ellipse cx="977" cy="385" rx="125" ry="27" fill="#000" opacity=".42" filter="url(#shadow)"/>
+
+<!-- stylized fly, palette derived from exported GLB materials -->
+<g id="fly" transform="translate(972 305)">
+  <animateTransform attributeName="transform" type="translate" values="972 305; 972 294; 972 305" dur="2.2s" repeatCount="indefinite"/>
+  <!-- wings -->
+  <g transform="translate(-42 -25)">
+    <path d="M0 0C-94-87-173-82-181-20C-189 40-101 49-12 23Z" fill="url(#wing)" stroke="#7cc8e9" stroke-opacity=".58" stroke-width="3">
+      <animateTransform attributeName="transform" type="rotate" values="0 0 0;-8 0 0;0 0 0;7 0 0;0 0 0" dur=".28s" repeatCount="indefinite"/>
+    </path>
+    <path d="M-9 5C-90-40-130-26-153-7" fill="none" stroke="#547b91" stroke-opacity=".55" stroke-width="2"/>
+  </g>
+  <g transform="translate(42 -25) scale(-1 1)">
+    <path d="M0 0C-94-87-173-82-181-20C-189 40-101 49-12 23Z" fill="url(#wing)" stroke="#7cc8e9" stroke-opacity=".58" stroke-width="3">
+      <animateTransform attributeName="transform" type="rotate" values="0 0 0;8 0 0;0 0 0;-7 0 0;0 0 0" dur=".28s" repeatCount="indefinite"/>
+    </path>
+    <path d="M-9 5C-90-40-130-26-153-7" fill="none" stroke="#547b91" stroke-opacity=".55" stroke-width="2"/>
+  </g>
+  <!-- legs -->
+  <g stroke="#090b0d" stroke-width="10" stroke-linecap="round" fill="none">
+    <path d="M-46 42L-101 88L-132 127"/><path d="M-18 55L-53 111L-78 148"/><path d="M31 53L70 109L101 145"/>
+    <path d="M46 41L103 84L134 119"/><path d="M12 59L26 121L42 153"/><path d="M-31 52L-83 101L-113 136"/>
+  </g>
+  <!-- abdomen -->
+  <ellipse cx="0" cy="44" rx="71" ry="91" fill="#0e1113" stroke="#222931" stroke-width="7"/>
+  <path d="M-58 29H58M-63 52H63M-55 75H55" stroke="#20272d" stroke-width="7" opacity=".95"/>
+  <!-- thorax -->
+  <ellipse cx="0" cy="-31" rx="79" ry="70" fill="#181c20" stroke="#2f3740" stroke-width="7"/>
+  <!-- head -->
+  <circle cx="0" cy="-101" r="67" fill="#171b1f" stroke="#303943" stroke-width="7"/>
+  <!-- eyes -->
+  <ellipse cx="-36" cy="-108" rx="31" ry="40" fill="#5c0508" stroke="#8b0b14" stroke-width="5"/>
+  <ellipse cx="36" cy="-108" rx="31" ry="40" fill="#5c0508" stroke="#8b0b14" stroke-width="5"/>
+  <ellipse cx="-27" cy="-122" rx="8" ry="12" fill="#d1e0e0" opacity=".95"/><ellipse cx="45" cy="-122" rx="8" ry="12" fill="#d1e0e0" opacity=".95"/>
+  <!-- mouth -->
+  <path d="M-20-74Q0-59 20-74" fill="none" stroke="#07080a" stroke-width="6" stroke-linecap="round"/>
+  <!-- antennae -->
+  <g stroke="#090b0d" stroke-width="6" stroke-linecap="round"><path d="M-24-156Q-52-190-78-176"/><path d="M24-156Q52-190 78-176"/></g>
+</g>
+
+<!-- text -->
+<rect x="68" y="66" width="6" height="38" rx="3" fill="#a78bfa"/>
+<text x="92" y="94" fill="#b9afd2" font-family="Arial,sans-serif" font-size="17" letter-spacing="4">YUNTRIX / EXPERIMENTAL PROJECT</text>
+<text x="68" y="188" fill="#ffffff" font-family="Arial,sans-serif" font-size="68" font-weight="800">MaleCNS</text>
+<text x="68" y="244" fill="#c4b5fd" font-family="Arial,sans-serif" font-size="35" font-weight="700">OBS Fly</text>
+<text x="68" y="306" fill="#e7e1f2" font-family="Arial,sans-serif" font-size="24">A tiny autonomous cartoon fly</text>
+<text x="68" y="338" fill="#e7e1f2" font-family="Arial,sans-serif" font-size="24">that treats your OBS scene as a physical world.</text>
+
+<g font-family="Arial,sans-serif" font-size="14" font-weight="700">
+  <rect x="68" y="389" width="148" height="38" rx="19" fill="#1f2937" stroke="#475569"/><text x="91" y="414" fill="#f1f5f9">RIGGED GLB ✓</text>
+  <rect x="230" y="389" width="166" height="38" rx="19" fill="#1f2937" stroke="#475569"/><text x="251" y="414" fill="#f1f5f9">7 ANIMATIONS ✓</text>
+  <rect x="410" y="389" width="154" height="38" rx="19" fill="#1f2937" stroke="#475569"/><text x="435" y="414" fill="#f1f5f9">OBS HABITAT ✓</text>
+</g>
+<g font-family="Arial,sans-serif">
+  <rect x="68" y="464" width="488" height="74" rx="18" fill="#1b1630" stroke="#7c3aed" stroke-opacity=".7"/>
+  <text x="92" y="493" fill="#d8b4fe" font-size="13" letter-spacing="2">CURRENT PHASE</text>
+  <text x="92" y="522" fill="#ffffff" font-size="21" font-weight="700">Final physics calibration</text>
+</g>
+<text x="68" y="590" fill="#9187a8" font-family="Arial,sans-serif" font-size="15">Blender • Python • GLB • Browser runtime • OBS • connectome experiments</text>
+</svg>
