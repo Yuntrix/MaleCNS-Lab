@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/readme/hero.svg" alt="MaleCNS / OBS Fly — autonomous cartoon fly living inside OBS" width="100%">
+  <img src="hero.svg" alt="MaleCNS / OBS Fly — autonomous cartoon fly living inside OBS" width="100%">
 </p>
 
 <p align="center">
@@ -52,7 +52,7 @@ The exported `fly_master.glb` currently contains:
 | Runtime format | **GLB / glTF 2.0** |
 
 <p align="center">
-  <img src="docs/assets/readme/animation-reel.svg" alt="Seven verified character animation clips" width="100%">
+  <img src="animation-reel.svg" alt="Seven verified character animation clips" width="100%">
 </p>
 
 ### Current animation clips
@@ -104,7 +104,7 @@ The long-term behavior system is intentionally not “pick a random animation ev
 The fly will have internal needs and a small autonomous life: energy, hunger, fatigue, strength, stress/arousal and boredom/activity need. Those states will influence what it chooses to do and whether it can afford to do it.
 
 <p align="center">
-  <img src="docs/assets/readme/life-loop.svg" alt="Watching, eating, cardio, sweeping, jail and dance behaviors" width="100%">
+  <img src="life-loop.svg" alt="Watching, eating, cardio, sweeping, jail and dance behaviors" width="100%">
 </p>
 
 Planned examples include:
