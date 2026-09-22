@@ -2,7 +2,7 @@
 
 <p align="center"><strong>An independent CS student project exploring how connectome data can drive a virtual fly.</strong><br>Built by <a href="https://github.com/Yuntrix">Yuntrix</a> · CS student at PJATK, Warsaw · Work in progress</p>
 
-<p align="center"><a href="#the-idea">The idea</a> · <a href="#current-state">Current state</a> · <a href="docs/ROADMAP.md">Roadmap</a> · <a href="docs/MaleCNS-Roadmap.xlsx">Project sheet</a> · <a href="CONTRIBUTING.md">Contribute</a></p>
+<p align="center"><a href="#the-idea">The idea</a> · <a href="#current-state">Current state</a> · <a href="docs/ROADMAP.md">Roadmap</a> · <a href="https://github.com/users/Yuntrix/projects/3">Live project board</a> · <a href="docs/MaleCNS-Roadmap.xlsx">Project sheet</a> · <a href="CONTRIBUTING.md">Contribute</a></p>
 
 ## The idea
 
