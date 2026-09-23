@@ -1,59 +1,70 @@
 <p align="center">
-  <img src="hero.svg" alt="MaleCNS / OBS Fly — autonomous cartoon fly living inside OBS" width="100%">
+  <img src="docs/assets/readme/v3/hero.gif" alt="MaleCNS / OBS Fly" width="100%">
 </p>
 
 <p align="center">
-  <strong>A tiny autonomous cartoon fly that treats an OBS scene as a physical world.</strong><br>
-  Rigged 3D character · browser runtime · OBS habitat · life-state system · connectome experiments
+  <strong>A tiny OBS fly with a body, a life, a behavior system — and eventually a brain.</strong><br>
+  Character · physical OBS habitat · autonomous life · stream events · MaleCNS-inspired reflex experiments
 </p>
 
 <p align="center">
-  <a href="#-what-is-this">What is this?</a> ·
-  <a href="#-the-character-is-already-alive-on-screen">Character</a> ·
-  <a href="#-obs-is-the-habitat">OBS habitat</a> ·
-  <a href="#-where-development-is-right-now">Current phase</a> ·
-  <a href="#-full-roadmap">Roadmap</a> ·
-  <a href="#-getting-started">Getting started</a> ·
-  <a href="CONTRIBUTING.md">Contribute</a>
+  <a href="#-meet-the-fly">Character</a> ·
+  <a href="#-obs-is-the-habitat">OBS Habitat</a> ·
+  <a href="#-the-flys-daily-life">Daily Life</a> ·
+  <a href="#-life-dashboard">Life Dashboard</a> ·
+  <a href="#-behavior-example-flow">Behavior Flow</a> ·
+  <a href="#-brain--control-stack">Brain</a> ·
+  <a href="#-stream-events">Events</a> ·
+  <a href="#-current-development">Current Phase</a> ·
+  <a href="#-full-roadmap">Roadmap</a>
 </p>
 
 ---
 
-## 🪰 What is this?
+## 🪰 What is MaleCNS / OBS Fly?
 
-**MaleCNS / OBS Fly** is an experimental student project built around one slightly ridiculous idea:
+What if a tiny cartoon fly actually **lived inside your OBS scene**?
 
-> What if a tiny cartoon fly actually *lived* inside your OBS scene?
+Not as a looping GIF.  
+Not as a random alert animation.
 
-Not as a looping GIF. Not as a random alert animation.
+The goal is a character that has:
 
-The goal is a character that can **walk, fly, land, collide with overlays, use surfaces, watch the stream, get tired, get hungry, exercise, eat, sleep, react to stream events and eventually layer MaleCNS-inspired reflexes underneath its higher-level behavior.**
+- a physical body
+- a physical world
+- internal needs
+- autonomous daily behavior
+- stream-event reactions
+- subscriber commands
+- and, later, a MaleCNS-inspired steering/reflex layer underneath the high-level life system
 
-OBS is not just the place where the fly is rendered — **the scene itself becomes its habitat.** Webcam boxes, chat overlays and other sources can become geometry the fly can land on, walk across, fall from or ignore depending on the source rules.
+The intended loop is:
 
-This repository also contains the earlier neural, vision and motor-control experiments that motivated the project. Those experiments are still exploratory; the current product-facing work is focused on turning the fly into a stable autonomous character first, then integrating the MaleCNS layer cleanly afterward.
+**walk → fly → land → collide → sit → watch → eat → sleep → train → clean → react → continue living**
 
-> **Important:** this is not a claim of consciousness, biological validation or a complete brain simulation. It is an independent learning project exploring connectome-inspired control, real-time embodiment and interactive behavior.
+OBS is not only where the character is rendered. **The OBS scene itself becomes the habitat.**
+
+> This is an experimental student project. It does not claim consciousness, a biologically validated complete fly brain, or a finished scientific simulation.
 
 ---
 
-## ✨ The character is already alive on screen
+## ✨ Meet the Fly
 
-The fly is an original **low-poly, cute, cartoon 3D character** built for small-screen readability inside a stream overlay.
+<p align="center">
+  <img src="docs/assets/readme/v3/character-showcase.png" alt="MaleCNS Blender fly character from multiple angles" width="100%">
+</p>
+
+The current fly is an original **low-poly cartoon character** built for small-screen readability inside a stream overlay.
 
 The exported `fly_master.glb` currently contains:
 
-| Character data | Verified in GLB |
+| Character data | Current export |
 | :--- | ---: |
 | Animation clips | **7** |
 | Animation channels per clip | **81** |
 | Meshes | **63** |
 | Nodes | **96** |
 | Runtime format | **GLB / glTF 2.0** |
-
-<p align="center">
-  <img src="animation-reel.svg" alt="Seven verified character animation clips" width="100%">
-</p>
 
 ### Current animation clips
 
@@ -62,89 +73,213 @@ The exported `fly_master.glb` currently contains:
 | `FLY_IDLE` | 2.000 s | Ground idle loop |
 | `FLY_WALK` | 1.000 s | Ground locomotion |
 | `FLY_FLIGHT` | 0.333 s | Airborne loop |
-| `FLY_TAKEOFF` | 0.708 s | Ground → flight transition |
-| `FLY_LAND` | 0.792 s | Flight → ground transition |
-| `FLY_TURN_LEFT` | 0.708 s | Left turn transition |
-| `FLY_TURN_RIGHT` | 0.708 s | Right turn transition |
+| `FLY_TAKEOFF` | 0.708 s | Ground → flight |
+| `FLY_LAND` | 0.792 s | Flight → ground |
+| `FLY_TURN_LEFT` | 0.708 s | Left turn |
+| `FLY_TURN_RIGHT` | 0.708 s | Right turn |
 
-The GLB is already loaded by the browser runtime and the animation clips play in the OBS-facing environment. Character scale and grounding were also corrected after replacing the old placeholder body with the real model.
-
-➡️ [`fly_master.glb`](fly_master.glb)
+The GLB is already connected to the browser-facing OBS runtime.
 
 ---
 
-## 🎬 OBS is the habitat
-
-The `WORLD` scene is treated as a physical environment rather than a flat overlay.
-
-The system is moving toward a simple rule: **visual source ≠ physical support ≠ activity target.** A source can collide with the fly without being a valid place to stand, sit or perform an activity.
-
-### Already working
-
-- OBS sources can participate in the collision world.
-- The combo source is fully ignored.
-- Mario has collision geometry but is not treated as an activity/support surface.
-- Eventlist has collision geometry but is not treated as an activity/support surface.
-- Webcam can remain a usable support surface.
-- Kick Chat geometry placement was corrected.
-- Kick Chat stays aligned during normal movement, manual movement and `WATCHING`.
-- Physical collider logic is being separated from activity/support semantics.
-- The real GLB character is running inside the browser runtime.
-
-The end goal is that the fly can do things like:
-
-**walk across chat → reach the edge → fall → take off → land on webcam → pull up a chair → watch the stream.**
-
----
-
-## 🍿 It should have a life, not a playlist
-
-The long-term behavior system is intentionally not “pick a random animation every few seconds.”
-
-The fly will have internal needs and a small autonomous life: energy, hunger, fatigue, strength, stress/arousal and boredom/activity need. Those states will influence what it chooses to do and whether it can afford to do it.
+## 🎬 OBS is the Habitat
 
 <p align="center">
-  <img src="life-loop.svg" alt="Watching, eating, cardio, sweeping, jail and dance behaviors" width="100%">
+  <img src="docs/assets/readme/v3/obs-habitat.gif" alt="OBS support and collision examples" width="100%">
 </p>
 
-Planned examples include:
+A core architecture rule is:
 
-- 🪑 **WATCHING** — move to a valid surface, place a chair, sit and watch.
-- 🍗 **EATING / MEAL** — recover hunger/energy through food.
-- 🏃 **CARDIO** — treadmill exercise with energy and fatigue cost.
-- 💪 **PUSHUPS / SITUPS** — commandable exercise, rejected when energy is too low.
-- 🧹 **SWEEPING** — ambient daily-life behavior.
-- 😴 **SLEEPING / RESTING** — recovery driven by fatigue and energy state.
-- 💃 **DANCE PARTY** — stream-event behavior with temporary props and animation set.
-- 🚔 **JAIL** — 1000 Kicks can trigger a 15-minute sentence, including secret escape attempts.
+> **visual source ≠ physical collider ≠ support surface ≠ activity target**
 
-The absurd parts are intentional. The underlying behavior system still has to be deterministic enough to debug, interruptible enough to react to stream events and structured enough to support future MaleCNS reflexes.
+That distinction matters because an OBS source can block the fly physically without being a valid place to stand, sit, place a chair or perform an activity.
+
+### Current habitat rules
+
+- `WORLD` is the habitat scene
+- OBS sources participate in collision geometry
+- Combo is fully ignored
+- Mario has collision but no activity/support role
+- Eventlist has collision but no activity/support role
+- Webcam can remain a usable support surface
+- Kick Chat geometry was corrected
+- Kick Chat stays aligned during normal movement, manual movement and `WATCHING`
+- Physical collider and activity/support semantics are being separated
+
+A target sequence looks like:
+
+**walk across chat → reach edge → fall → take off → land on webcam → place chair → sit → watch**
 
 ---
 
-## 🚧 Where development is right now
+## 🏠 The Fly's Daily Life
+
+<p align="center">
+  <img src="docs/assets/readme/v3/daily-life.gif" alt="Watching, eating, sleeping, cardio, pushups and sweeping" width="100%">
+</p>
+
+The long-term goal is not to pick a random animation every few seconds.
+
+The fly should have a small autonomous life:
+
+- 🪑 `WATCHING`
+- 🍗 `EATING / SNACKING`
+- 😴 `RESTING / SLEEPING`
+- 🏃 `CARDIO`
+- 💪 `PUSHUPS`
+- 💪 `SITUPS`
+- 🧹 `SWEEPING`
+- 🧼 `GROOMING`
+- 🔎 `EXPLORING`
+
+Behavior selection should depend on **internal state, cooldowns, physical conditions, costs and available surfaces**.
+
+---
+
+## 📊 Life Dashboard
+
+<p align="center">
+  <img src="docs/assets/readme/v3/life-dashboard.gif" alt="Animated concept for the Fly Life Dashboard" width="100%">
+</p>
+
+The planned life-state model includes:
+
+| State | Intended role |
+| :--- | :--- |
+| `energy` | walking, flying and exercise cost energy; food/rest recover it |
+| `hunger / satiety` | changes over time; eating restores satiety |
+| `fatigue / sleep_pressure` | activity increases it; sleep/rest recover it |
+| `strength / conditioning` | training can gradually affect physical capacity |
+| `stress / arousal` | sensory events and reactions can modulate it |
+| `boredom / activity_need` | inactivity can make exploration/activity more attractive |
+
+The values shown in the animated dashboard are **illustrative UI values**, not measured runtime results.
+
+### Character progression
+
+Training is intended to be more than a visual gag.
+
+Repeated exercise can eventually feed into `strength / conditioning`, while low energy and fatigue still limit what the character can do.
+
+That gives the fly a tiny long-term development arc rather than resetting to exactly the same internal state forever.
+
+---
+
+## 🔀 Behavior Example Flow
+
+<p align="center">
+  <img src="docs/assets/readme/v3/behavior-flow.gif" alt="State driven behavior and event preemption example" width="100%">
+</p>
+
+Example:
+
+**boredom rises → exploring becomes attractive → walk → edge → fall → takeoff → land on webcam → WATCHING**
+
+Then a higher-priority event arrives:
+
+**500 Kicks → priority 300 → cancel current daily behavior → cleanup → DANCE_PARTY → return to autonomous life**
+
+This is why behavior lifecycle and cleanup are important. A preempted behavior should not leave a chair, treadmill, jail prop or stale animation state behind.
+
+---
+
+## 🧠 Brain / Control Stack
+
+<p align="center">
+  <img src="docs/assets/readme/v3/brain-control.gif" alt="Autonomous life and MaleCNS control stack" width="100%">
+</p>
+
+The design deliberately separates two kinds of control.
+
+### Autonomous life — **WHAT is the fly doing?**
+
+`Life State → Life Manager → Behavior Arbiter → Current Behavior`
+
+The Life Manager can evaluate:
+
+- current internal state
+- cooldowns
+- preconditions
+- cost / benefit
+- available surfaces
+- current stream/event context
+
+### MaleCNS / sensory reflex layer — **HOW does the body react while doing it?**
+
+Later integration is intended to support:
+
+- steering
+- avoidance
+- startle
+- looming response
+- locomotor variation
+- arousal modulation
+
+MaleCNS is therefore not planned as the owner of every high-level daily-life choice.
+
+A behavior can continue while short reflexes temporarily modulate locomotion.
+
+---
+
+## 🎁 Stream Events
+
+<p align="center">
+  <img src="docs/assets/readme/v3/stream-events.gif" alt="Meal, Dance Party and Jail stream events" width="100%">
+</p>
+
+Planned Kicks routing:
+
+- **100 Kicks → MEAL**
+- **500 Kicks → DANCE_PARTY + existing meme/video**
+- **1000 Kicks → JAIL for 15 minutes**
+
+### 🚔 Jail concept
+
+The jail event can include:
+
+- Jail asset
+- Enter animation/transition
+- Idle
+- Sit
+- Sleep
+- Tally marks
+- Secret escape attempts
+- Nail clipper
+- Energy-based escape rate
+- Escape energy cost
+- `!kaçmaya çalışıyor`
+- Hide tool
+- Innocent pose
+- Escape progress reset
+- Sentence reset → 15 min
+
+### 🟣 Subscriber commands
+
+Planned command layer:
+
+- Subscriber verification
+- Whitelist
+- Cooldown
+- `!cardio`
+- `!pushup`
+- `!situp`
+- Low-energy rejection
+- `COMMAND_REJECTED_LOW_ENERGY`
+- Rejection shown in the Brain / State UI
+
+---
+
+## 🚧 Current Development
+
+<p align="center">
+  <img src="docs/assets/readme/v3/development-progress.gif" alt="MaleCNS OBS Fly development progress" width="100%">
+</p>
 
 ### **Current phase: Final Physics Calibration**
 
-The next milestone is to stop relying on placeholder body dimensions and make the physics match the **real exported fly**.
+The current job is to stop using placeholder body dimensions and make physics match the **real exported GLB character**.
 
-```text
-Character ✅  →  OBS Habitat ✅  →  Physics Calibration 🔴
-                                      ↓
-                                 WATCHING 🟠
-                                      ↓
-                                  Life State 🟡
-                                      ↓
-                               Autonomous Life
-                                      ↓
-                           Commands / Kicks Events
-                                      ↓
-                              MaleCNS + Vision
-```
-
-### Physics calibration checklist
-
-- Final body collider for the real GLB character
+- Real GLB body collider
 - Real landing point
 - Physical foot contact point
 - Walking footprint
@@ -152,62 +287,24 @@ Character ✅  →  OBS Habitat ✅  →  Physics Calibration 🔴
 - Flying collider
 - Overlay-edge snag testing
 - Left/right collision testing
-- Landing on top of overlays
-- Hitting overlays from below
+- Landing on overlays
+- Collision from below
 - Walking off an overlay and falling
-- `SCREEN_FLOOR` behavior
-- Ground ↔ flight transition testing
-
-This phase matters because every later system — chairs, exercise props, jail, walking, landing and life behaviors — depends on the fly understanding where its body really is.
+- `SCREEN_FLOOR`
+- Ground ↔ flight transitions
 
 ---
 
-## 🧠 Behavior architecture
+# 🗺️ Full Roadmap
 
-High-level behavior and low-level reflex control are deliberately separated.
-
-```mermaid
-flowchart TD
-    K["Kicks events\npriority 300"] --> A["Behavior Arbiter"]
-    S["Subscriber commands\npriority 200"] --> A
-    L["Daily life\npriority 100"] --> A
-
-    ST["Life State\nenergy · hunger · fatigue\nstrength · stress · boredom"] --> L
-
-    A --> B["Current behavior\nENTER → ACTIVE → EXIT → CLEANUP"]
-    B --> BODY["Body / Animation / Props"]
-    BODY --> OBS["OBS Habitat"]
-
-    V["Vision / sensory events"] --> CNS["MaleCNS reflex layer"]
-    CNS --> BODY
-
-    OBS -. "motion / looming / scene change" .-> V
-```
-
-### Arbiter priority
-
-```text
-KICKS EVENTS        = 300
-SUBSCRIBER COMMANDS = 200
-DAILY LIFE          = 100
-```
-
-A stream event should be able to interrupt daily life without leaving a chair, jail prop, treadmill or animation state stuck on screen. That is why behaviors are planned around explicit phases such as `ENTER`, `ACTIVE`, `CANCEL_REQUESTED`, `TRANSITION_OUT`, `CLEANUP` and `DONE`.
-
-MaleCNS is planned as a **steering/reflex layer**, not as the owner of every high-level life decision. The fly can continue a behavior while short reflexes such as avoidance, looming response or startle temporarily alter locomotion.
-
----
-
-## 🗺️ Full roadmap
-
-Status legend: **✅ implemented foundation** · **🔴 current** · **🟠 next** · **🟡 planned life system** · **⚪ later / integration**
+Status legend: **✅ implemented foundation** · **🔴 current** · **🟠 next** · **🟡 planned** · **⚪ later / integration**
 
 <details open>
-<summary><strong>✅ A. Character / Blender</strong></summary>
+<summary><strong>✅ A. Karakter / Blender</strong></summary>
 
-- Original low-poly cartoon fly designed
-- Rig created
-- Core animations exported:
+- Özgün low-poly cartoon sinek tasarlandı
+- Rig oluşturuldu
+- Core animasyonlar hazır:
   - `FLY_IDLE`
   - `FLY_WALK`
   - `FLY_FLIGHT`
@@ -215,64 +312,66 @@ Status legend: **✅ implemented foundation** · **🔴 current** · **🟠 next
   - `FLY_LAND`
   - `FLY_TURN_LEFT`
   - `FLY_TURN_RIGHT`
-- `fly_master.blend` kept as the master Blender file locally
-- `fly_master.glb` exported
-- GLB connected to the OBS Browser Source runtime
-- GLB animation clips run in the runtime
-- Character scale corrected
-- Grounding / physical placement corrected
+- `fly_master.blend` master dosya olarak kaydedildi
+- `fly_master.glb` export edildi
+- GLB OBS Browser Source'a bağlandı
+- GLB animasyonları runtime'da çalışıyor
+- Karakter scale düzeltildi
+- Grounding / yere basma düzeltildi
 
 </details>
 
 <details open>
-<summary><strong>✅ B. OBS Habitat — Base Geometry</strong></summary>
+<summary><strong>✅ B. OBS Habitat — Temel Geometri</strong></summary>
 
-- `WORLD` scene used as the habitat
-- OBS sources enter the collision system
-- Combo source fully ignored
-- Mario collision exists but activity/support is disabled
-- Eventlist collision exists but activity/support is disabled
-- Webcam remains a usable support surface
-- Kick Chat geometry bug fixed
-- Kick Chat positioned correctly during normal movement
-- Kick Chat positioned correctly during manual movement
-- Kick Chat positioned correctly during `WATCHING`
-- Physical collider and activity/support concepts are being separated
+- `WORLD` sahnesi habitat olarak kullanılıyor
+- OBS source'ları collision sistemine giriyor
+- kombo tamamen `IGNORE`
+- Mario collision var ama activity/support yok
+- Eventlist collision var ama activity/support yok
+- Webcam kullanılabilir support olarak kalıyor
+- Kick Chat geometry bug düzeltildi
+- Kick Chat normal hareket sırasında doğru yerde
+- Kick Chat manual movement sırasında doğru yerde
+- Kick Chat `WATCHING` sırasında doğru yerde
+- Physical collider ile activity/support kavramları ayrılmaya başladı
 
 </details>
 
 <details open>
-<summary><strong>🔴 C. CURRENT — Final Physics Calibration</strong></summary>
+<summary><strong>🔴 C. ŞİMDİKİ AŞAMA — Final Fizik Kalibrasyonu</strong></summary>
 
-- Final body collider for the real GLB character
-- Real landing point
-- Physical foot-contact point
+- Gerçek GLB karakter için final body collider
+- Gerçek landing point
+- Ayakların fiziksel temas noktası
 - Walking footprint
 - Standing footprint
 - Flying collider
-- Overlay-edge snag test
-- Left/right collision test
-- Landing on top of overlays
-- Collision from below overlays
-- Walk-off-and-fall test
-- `SCREEN_FLOOR` behavior test
-- Ground ↔ flight transition test
+- Sineğin overlay kenarlarında takılma testi
+- Sol/sağ collision testi
+- Overlay üstüne landing testi
+- Overlay altından çarpma testi
+- Overlay üstünden yürüyüp düşme testi
+- `SCREEN_FLOOR` davranışı testi
+- Ground ↔ flight transition testi
 
-The goal of this phase is to completely retire placeholder body dimensions and make all movement use the real character scale.
+Burada artık eski placeholder ölçülerini tamamen bırakıp gerçek karakter boyutuyla fizik yapacağız.
 
 </details>
 
 <details>
-<summary><strong>🟠 D. WATCHING Finalization</strong></summary>
+<summary><strong>🟠 D. WATCHING Finalizasyonu</strong></summary>
 
-- Real chair asset
-- Scale chair to the character
-- Walk/fly toward chair target
-- Chair sitting point
-- Chair placement on webcam
-- Chair placement on chat
-- Reject surfaces that are too small
-- Avoid repeatedly placing the chair in the same location
+Fizik oturduktan sonra:
+
+- Gerçek sandalye asset'i
+- Sandalye boyutunu karaktere göre ayarla
+- Sineğin sandalyeye doğru yürümesi/uçması
+- Sandalyeye oturma noktası
+- Webcam üstünde sandalye yerleşimi
+- Chat üstünde sandalye yerleşimi
+- Uygun olmayan küçük yüzeyleri reddet
+- Aynı yere sürekli sandalye koymama
 - Natural weighted placement
 - `FLY_SIT_DOWN`
 - `FLY_SIT_IDLE`
@@ -282,7 +381,7 @@ The goal of this phase is to completely retire placeholder body dimensions and m
 </details>
 
 <details>
-<summary><strong>🟡 E. Life State System</strong></summary>
+<summary><strong>🟡 E. Life State Sistemi</strong></summary>
 
 - `energy`
 - `hunger / satiety`
@@ -290,13 +389,13 @@ The goal of this phase is to completely retire placeholder body dimensions and m
 - `strength / conditioning`
 - `stress / arousal`
 - `boredom / activity_need`
-- State changes over time
-- Walking energy cost
-- Flying energy cost
-- Exercise energy/fatigue cost
+- Zamanla state değişimi
+- Walking enerji maliyeti
+- Flying enerji maliyeti
+- Exercise enerji/fatigue maliyeti
 - Sleep recovery
 - Food recovery
-- Critical-energy behaviors
+- Critical energy davranışları
 
 </details>
 
@@ -312,26 +411,24 @@ The goal of this phase is to completely retire placeholder body dimensions and m
 - `SWEEPING`
 - `PUSHUPS`
 - `SITUPS`
-- State-driven selection instead of pure randomness
-- Cooldown system
+- Random değil, state-driven seçim
+- Cooldown sistemi
 - Preconditions
 - Cost / benefit
-- Behavior transition system
+- Behavior transition sistemi
 
 </details>
 
 <details>
 <summary><strong>🔵 G. Behavior Arbiter</strong></summary>
 
-Priority:
+Priority kesin:
 
 ```text
 KICKS EVENTS        = 300
 SUBSCRIBER COMMANDS = 200
 DAILY LIFE          = 100
 ```
-
-Behavior lifecycle:
 
 - `ENTER`
 - `ACTIVE`
@@ -340,9 +437,9 @@ Behavior lifecycle:
 - `CLEANUP`
 - `DONE`
 - Graceful preemption
-- Current behavior tracking
-- Pending behavior tracking
-- Context commands routed separately
+- Current behavior
+- Pending behavior
+- Context commands ayrı route
 
 </details>
 
@@ -350,27 +447,25 @@ Behavior lifecycle:
 <summary><strong>🟣 H. Subscriber Commands</strong></summary>
 
 - Subscriber verification
-- Command whitelist
-- Cooldowns
+- Whitelist command sistemi
+- Cooldown
 - `!cardio`
 - `!pushup`
 - `!situp`
-- Reject command when energy is insufficient
+- Energy insufficient → reject
 - `COMMAND_REJECTED_LOW_ENERGY`
-- Show rejection in Brain / State UI
+- Brain/State UI'da rejection gösterimi
 
 </details>
 
 <details>
 <summary><strong>🟪 I. Kicks Events</strong></summary>
 
-### Event router
-
 - Kicks router
-- Preserve the existing meme/video system
+- Mevcut meme/video sistemini koru
 - **100 Kicks → MEAL**
-- **500 Kicks → DANCE_PARTY + existing meme/video**
-- **1000 Kicks → JAIL for 15 minutes**
+- **500 Kicks → DANCE_PARTY + mevcut video/meme**
+- **1000 Kicks → JAIL 15 dakika**
 
 ### Jail
 
@@ -379,13 +474,13 @@ Behavior lifecycle:
 - Idle
 - Sit
 - Sleep
-- Tally marks
+- Tally mark
 - Secret escape
 - Nail clipper
 - Energy-based escape rate
 - Escape energy cost
 - `!kaçmaya çalışıyor`
-- Hide tool
+- Tool hide
 - Innocent pose
 - Escape progress reset
 - Sentence reset → 15 min
@@ -397,7 +492,7 @@ Behavior lifecycle:
 - Disco ball
 - Dance animation set
 - Event duration
-- Return to previous life afterward
+- Return to previous life
 
 </details>
 
@@ -424,7 +519,7 @@ Behavior lifecycle:
 <details>
 <summary><strong>⚫ K. MaleCNS Integration</strong></summary>
 
-This is intentionally connected **after the life system**.
+Bunu life sisteminden sonra bağlayacağız.
 
 - High-level behavior ≠ MaleCNS
 - MaleCNS steering
@@ -433,8 +528,8 @@ This is intentionally connected **after the life system**.
 - Looming response
 - Locomotor variation
 - Arousal modulation
-- Short reflexes while a behavior continues
-- Energy/strength → actuator-capacity model
+- Behavior devam ederken kısa reflex
+- Energy/strength → actuator capacity modeli
 - Controlled internal signals
 
 </details>
@@ -450,8 +545,8 @@ This is intentionally connected **after the life system**.
 - Temporal filtering
 - Hysteresis
 - Cooldown
-- Less-frequent semantic vision
-- Vision should not directly choose high-level behavior
+- Semantic vision daha seyrek
+- Vision doğrudan behavior seçmesin
 
 </details>
 
@@ -478,163 +573,111 @@ This is intentionally connected **after the life system**.
 <details>
 <summary><strong>🧹 N. Final Refactor</strong></summary>
 
-Target production layout:
+En son:
 
-```text
-main.py
-config.py
-brain/
-body/
-behavior/
-daily_life/
-subscriber_commands/
-kicks_events/
-integrations/
-world/
-ui/
-assets/
-experiments/
-```
-
-Then:
-
-- Move old experiments under `experiments/`
-- Keep one production entry point
-- Clean config/constants
-- Clean logging
+- `main.py`
+- `config.py`
+- `brain/`
+- `body/`
+- `behavior/`
+- `daily_life/`
+- `subscriber_commands/`
+- `kicks_events/`
+- `integrations/`
+- `world/`
+- `ui/`
+- `assets/`
+- Eski experiment'leri `experiments/` altına taşı
+- Tek production entry point
+- Config/constants temizliği
+- Logging temizliği
 
 </details>
 
 ---
 
-## 🔬 Where MaleCNS fits
+## 🔐 Security / Privacy
 
-The repository began as an exploration of how public MaleCNS connectome data could participate in an understandable virtual-fly simulation.
+This public repository should contain **configuration names and source code, never credential values**.
 
-Existing research code includes:
+Keep API keys, OBS credentials, tokens, private screenshots and raw personal logs outside the repository.
 
-- Leaky integrate-and-fire neural engines
-- Continuous and multi-input brain sessions
-- Visual retina / laterality experiments
-- Screen-capture and visual encoding experiments
-- Motor decoding / steering experiments
-- Optional Gemini screen-perception experiments
-- Browser / OBS embodiment prototypes
-
-The current architecture direction is stricter than the early experiments: **the character should first have a stable body, world and behavior lifecycle.** MaleCNS can then modulate movement and reflexes without being forced to solve high-level daily-life planning.
-
-```mermaid
-flowchart LR
-    D["Public MaleCNS data"] --> N["Neural experiments"]
-    V["Local visual signals"] --> N
-    N --> R["Steering / reflex modulation"]
-
-    LS["Life State"] --> LM["Life Manager"]
-    E["Kicks / commands"] --> A["Behavior Arbiter"]
-    LM --> A
-    A --> B["Behavior"]
-
-    R --> BODY["Body controller"]
-    B --> BODY
-    BODY --> OBS["OBS habitat"]
-```
-
-The underlying [MaleCNS connectome](https://male-cns.janelia.org/) is a collaboration between FlyEM at HHMI Janelia, the University of Cambridge, the MRC Laboratory of Molecular Biology and Google Research. Their work supplies the anatomical dataset; this repository is an independent student experiment built around it.
+The `.gitignore` already excludes common credential files, runtime logs, screen captures and generated scientific data. Review staged files before every public commit.
 
 ---
 
-## 🗂️ Repository map
+## 🔬 Where MaleCNS Fits
 
-The repository still contains many versioned experiments. A final cleanup is deliberately postponed until the behavior architecture stabilizes.
+The repository also contains earlier experiments around:
+
+- LIF neural simulation
+- continuous and multi-input brain sessions
+- visual retina / laterality
+- local screen/visual encoding
+- motor decoding / steering
+- optional semantic perception
+- browser / OBS embodiment
+
+The current architecture direction is:
+
+**stable body → stable world → life state → behavior lifecycle → MaleCNS reflex integration**
+
+---
+
+## 🗂️ Repository Map
 
 ```text
 MaleCNS-Lab/
-├── body/                         # Character state/control prototypes
-├── world/                        # OBS habitat and placement logic
-├── vision/                       # Optional perception experiments
-├── data/                         # Scientific-data setup and inventory
-├── docs/                         # Roadmaps and project documentation
-├── assets/vendor/                # Browser renderer bundle
-├── fly_master.glb                # Rigged cartoon fly + 7 animations
-├── lif_engine*.py                # Neural simulation experiments
-├── brain_session*.py             # Brain/session experiments
-├── motor_decoder*.py             # Neural → motor experiments
-├── vision_bridge*.py             # Screen → input experiments
-├── visual_retina_encoder*.py     # Retina mapping experiments
-├── obs_overlay_server*.py        # OBS/browser runtime generations
-└── watching_prototype.py         # WATCHING behavior prototype
+├── body/
+├── world/
+├── vision/
+├── data/
+├── docs/
+├── assets/vendor/
+├── fly_master.glb
+├── lif_engine*.py
+├── brain_session*.py
+├── motor_decoder*.py
+├── vision_bridge*.py
+├── visual_retina_encoder*.py
+└── obs_overlay_server*.py
 ```
 
-Version suffixes do **not** guarantee compatibility. Several `test_*.py` files are experimental scripts with top-level execution rather than a conventional unit-test suite.
+The repository still contains versioned experiments. Final cleanup is intentionally postponed until the runtime architecture stabilizes.
 
 ---
 
-## 🚀 Getting started
-
-> The repository is still an experimental source release. The complete neural path requires additional scientific data and the current runtime has not yet been packaged as a one-command end-user application.
+## 🚀 Getting Started
 
 Python 3.12 reflects the original development environment.
 
 ```powershell
 python -m venv .venv
 .venv\Scripts\python.exe -m pip install -r requirements.txt
-
-# After supplying the matching scientific data:
-.venv\Scripts\python.exe obs_overlay_server_v6.py
 ```
 
-The overlay is configured around `http://127.0.0.1:8765/` and OBS integration expects an OBS WebSocket setup.
+This is still an experimental source release rather than a one-command end-user application.
 
-For the scientific-data side, start with [`data/README.md`](data/README.md).
+See:
 
-### Environment variables
-
-Optional integrations read credentials such as:
-
-```text
-GEMINI_API_KEY
-OBS_WEBSOCKET_PASSWORD
-```
-
-Do not commit real credentials. Screen capture may contain private desktop content; any external vision integration should be treated accordingly.
+- [`data/README.md`](data/README.md)
+- [`CONTRIBUTING.md`](CONTRIBUTING.md)
 
 ---
 
-## 🧪 Project boundaries
-
-- This is a work in progress.
-- The anatomy dataset does not automatically imply validated neural dynamics or validated behavior.
-- Experimental source files are not all part of one stable production pipeline yet.
-- Planned life behaviors shown above are roadmap targets unless explicitly marked implemented/prototype.
-- MaleCNS is not currently presented as the sole controller of the character's complete autonomous life.
-- Performance, latency and biological claims require measurements and reproducible validation before they should be treated as results.
-
----
-
-## 🤝 Help shape it
-
-This is my first public project and I am building it while learning. I use GPT-assisted coding and debugging, then inspect, test and refine the implementation as the project evolves.
+## 🤝 Help Shape It
 
 Useful contribution areas include:
 
-- Physics/collision architecture
-- Behavior arbitration and preemption
+- physics / collision architecture
+- behavior arbitration and graceful preemption
 - OBS WebSocket geometry handling
 - Three.js / GLB runtime behavior
-- Animation state transitions
-- Connectome-to-motor experiments
-- Visual encoding / laterality validation
-- Profiling and reproducibility
-
-See [`CONTRIBUTING.md`](CONTRIBUTING.md) for contribution notes.
-
----
-
-## 🇹🇷 Türkçe kısa açıklama
-
-MaleCNS / OBS Fly, OBS ekranının içinde yaşayan küçük bir çizgi-film karasineği oluşturma projesi. Amaç sadece animasyon oynatan bir overlay yapmak değil; sineğin OBS kaynaklarını fiziksel bir dünya gibi algılaması, yürümesi, uçması, yüzeylere konması, günlük ihtiyaçlara göre davranış seçmesi, yayın eventlerine tepki vermesi ve ileride MaleCNS tabanlı refleks/steering katmanıyla birleşmesi.
-
-Şu an karakter, rig, GLB runtime ve temel OBS habitat sistemi mevcut. Aktif geliştirme aşaması gerçek karakter ölçülerine göre **final fizik kalibrasyonu**.
+- animation transitions
+- life-state architecture
+- connectome-to-motor experiments
+- visual laterality
+- profiling and reproducibility
 
 ---
 
