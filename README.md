@@ -1,7 +1,15 @@
 <p align="center"><img src="assets/readme/hero/hero-world.svg" alt="MaleCNS OBS Fly project overview" width="1200"></p>
 
 <h1 align="center">MaleCNS / OBS Fly</h1>
+
+<h2 align="center">🚧 WORK IN PROGRESS 🚧</h2>
+
 <p align="center"><strong>A virtual fly learning to live inside an OBS scene — with a body, internal needs, autonomous behavior, and eventually connectome-inspired sensory reflexes.</strong></p>
+
+<p align="center">
+  <strong>Development build:</strong> the repository contains working foundations, ongoing experiments and planned systems. It is not yet a finished or stable release.
+</p>
+
 <p align="center"><a href="#idea">IDEA</a> · <a href="#character">CHARACTER</a> · <a href="#habitat">HABITAT</a> · <a href="#life">LIFE</a> · <a href="#brain">BRAIN</a> · <a href="#events">EVENTS</a> · <a href="#roadmap">ROADMAP</a></p>
 
 <p align="center"><strong>NOW</strong> · Final physics calibration &nbsp; | &nbsp; <strong>NEXT</strong> · Watching and autonomous life &nbsp; | &nbsp; <strong>LONG-TERM</strong> · Vision → MaleCNS → reflex → body</p>
