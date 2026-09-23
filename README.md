@@ -301,5 +301,5 @@ Focused reports should include the tested script/version, input data assumptions
 MaleCNS / OBS Fly is my first public project and a place where I am learning to turn experiments into an understandable, testable system.
 
 ## Türkçe kısa özet
-
-PJATK Varşova’da Bilgisayar Bilimi öğrencisi ve oyun test uzmanıyım. MaleCNS / OBS Fly, OBS içinde yaşayan; ihtiyaçlar, davranışlar ve ileride MaleCNS tabanlı duyusal refleksler kazanması planlanan sanal bir sinek projesidir. GPT ve Google AI araçlarından geliştirme desteği alıyor, sistem kararlarını ve test sürecini kendim yönetiyorum.
+PJATK Varşova’da Bilgisayar Bilimi öğrencisiyim ve game testing yapıyorum. Otomasyon, yazılım geliştirme, yapay zekâ destekli tarım teknolojileri, akıllı sistemler ve yayıncılık araçları üzerine projeler geliştiriyorum.
+. MaleCNS / OBS Fly, OBS içinde yaşayan; ihtiyaçlar, davranışlar ve ileride MaleCNS tabanlı duyusal refleksler kazanması planlanan sanal bir sinek projesidir. GPT ve Google AI araçlarından geliştirme desteği alıyor, sistem kararlarını ve test sürecini kendim yönetiyorum.
